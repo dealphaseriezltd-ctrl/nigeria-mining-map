@@ -420,6 +420,56 @@
   .about-panel li{margin:5px 0}
   .about-panel li::marker{color:var(--gold)}
 
+  /* ————— Identify a rock or mineral ————— */
+  .identify-panel{margin-top:16px;padding:20px}
+  .identify-panel[hidden]{display:none}
+  .id-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+  .id-head h2{font-size:25px;color:var(--ink)}
+  .id-head h2::after{content:"";display:block;width:46px;height:2px;background:var(--gold);margin-top:9px}
+  .id-intro{font-size:16px;color:var(--ink-dim);margin:10px 0 0}
+  .id-honest{margin:12px 0 0;background:rgba(201,162,39,.07);border:1px solid var(--line-gold);border-left:4px solid var(--gold);border-radius:8px;padding:12px 15px;font-size:15.5px;color:var(--ink-dim)}
+  .id-honest strong{color:var(--gold-pale)}
+  .id-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+  @media (max-width:900px){ .id-cols{grid-template-columns:1fr} }
+  .id-cols h3{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);margin:0 0 10px}
+  .id-search{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg2);color:var(--ink);min-height:44px}
+  .id-search:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(201,162,39,.18)}
+  .id-pick-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px;max-height:300px;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--gold-deep) transparent}
+  .id-pick{width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:10px 13px;cursor:pointer;font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px;min-height:44px}
+  .id-pick:hover{border-color:var(--gold-deep);background:var(--surface2)}
+  .id-pick .dot{width:12px;height:12px;border-radius:50%;flex:none;border:1.5px solid rgba(11,14,13,.9);box-shadow:0 0 0 1px rgba(232,193,90,.3)}
+  .id-pick .grp{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--muted);text-align:right}
+  .id-q{margin:0 0 16px}
+  .id-q p{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px}
+  .id-q p small{display:block;font-weight:400;font-size:14px;color:var(--muted);margin-top:2px}
+  .id-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .id-chip{border:1px solid var(--line);background:var(--bg2);color:var(--ink-dim);border-radius:999px;padding:9px 15px;font-weight:700;cursor:pointer;min-height:44px;font-size:15px}
+  .id-chip:hover{border-color:var(--gold-deep);color:var(--gold-pale)}
+  .id-chip.on{background:var(--gold);color:#12140F;border-color:var(--gold)}
+  .id-state{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg2);color:var(--ink);min-height:44px}
+  .id-state:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(201,162,39,.18)}
+  .id-photo-row{display:flex;gap:14px;align-items:flex-start;margin:0 0 16px}
+  .id-photo-row .id-q{flex:1 1 auto;margin:0}
+  .id-thumb{flex:none;width:84px;height:84px;border:1px dashed var(--line-gold);border-radius:8px;overflow:hidden;background:var(--bg2);display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:12px;text-align:center;padding:4px}
+  .id-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .id-photo-input{width:100%;padding:6px 0;border:0;background:transparent;color:var(--ink-dim);min-height:44px}
+  .id-results{margin-top:22px;display:grid;gap:14px}
+  .id-results:empty{margin-top:0}
+  .id-msg{font-size:15.5px;color:var(--ink-dim);margin:0}
+  .id-card{border:1px solid var(--line-gold);border-radius:10px;background:var(--surface);padding:18px}
+  .id-likely{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  .id-likely strong{color:var(--gold-pale);font-size:14px}
+  .id-card h3{font-size:26px;margin:0 0 8px;text-transform:capitalize}
+  .id-card figure{margin:0 0 14px}
+  .id-card figure img{width:100%;max-height:300px;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+  .id-card figcaption{font-size:13px;color:var(--muted);margin-top:6px;font-style:italic}
+  .id-card p{font-size:16px;color:var(--ink-dim);margin:0 0 10px;line-height:1.55}
+  .id-card p strong{color:var(--ink)}
+  .id-card .id-check strong{color:var(--gold-pale)}
+  .id-card .id-safety{border:1px solid var(--t-exploration);background:rgba(224,122,62,.1);border-radius:8px;padding:11px 13px;color:var(--ink)}
+  .id-card .id-safety strong{color:var(--t-exploration)}
+  .id-find{margin-top:4px}
+
   /* ————— Install app (PWA) — discreet pill, only when install is offered ————— */
   .pwa-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:900;display:flex;align-items:center;gap:10px;max-width:min(94vw,520px);background:rgba(20,24,21,.97);border:1px solid var(--line-gold);border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.6);padding:8px 8px 8px 16px;font-size:14px;color:var(--ink-dim)}
   .pwa-bar[hidden]{display:none}
@@ -537,7 +587,73 @@
     <a href="about.html">About</a>
     <a href="invest.html">Why invest</a>
     <a href="contact.html">Contact</a>
+    <a href="#identify-panel" id="identify-open">Identify a rock</a>
   </nav>
+
+  <section class="card identify-panel" id="identify-panel" hidden aria-label="Identify a rock or mineral">
+    <div class="id-head">
+      <h2>Identify a rock or mineral</h2>
+      <button type="button" class="btn-ghost" id="identify-close">Back to map</button>
+    </div>
+    <p class="id-intro">Pick a mineral you know, or answer 4 quick questions about a sample you found.</p>
+    <p class="id-honest"><strong>A photo alone cannot prove a mineral. Your answers decide.</strong> Only a lab test can be sure.</p>
+    <div class="id-cols">
+      <div>
+        <h3>Pick a mineral</h3>
+        <input id="id-search" class="id-search" type="search" placeholder="Search 42 minerals…" autocomplete="off" aria-label="Search minerals" />
+        <ul class="id-pick-list" id="id-pick-list"></ul>
+      </div>
+      <div>
+        <h3>Answer 4 quick questions</h3>
+        <div class="id-photo-row">
+          <div class="id-q">
+            <p>Add a photo <small>Optional. It stays on your phone — it is never sent anywhere.</small></p>
+            <input id="id-photo" class="id-photo-input" type="file" accept="image/*" aria-label="Add a photo of your sample" />
+          </div>
+          <div class="id-thumb" id="id-thumb" aria-hidden="true">No photo yet</div>
+        </div>
+        <div class="id-q">
+          <p>1. What colour is it?</p>
+          <div class="id-chips" id="id-colours" role="group" aria-label="Colour">
+            <button type="button" class="id-chip" data-v="yellow">Yellow / gold</button>
+            <button type="button" class="id-chip" data-v="black">Black</button>
+            <button type="button" class="id-chip" data-v="white">White / pale</button>
+            <button type="button" class="id-chip" data-v="red">Red / brown</button>
+            <button type="button" class="id-chip" data-v="green">Green</button>
+            <button type="button" class="id-chip" data-v="blue">Blue</button>
+            <button type="button" class="id-chip" data-v="purple">Purple / pink</button>
+            <button type="button" class="id-chip" data-v="grey">Grey / silver</button>
+            <button type="button" class="id-chip" data-v="other">Other</button>
+          </div>
+        </div>
+        <div class="id-q">
+          <p>2. How does it shine?</p>
+          <div class="id-chips" id="id-shine" role="group" aria-label="Shine">
+            <button type="button" class="id-chip" data-v="metallic">Shiny like metal</button>
+            <button type="button" class="id-chip" data-v="glassy">Glassy</button>
+            <button type="button" class="id-chip" data-v="dull">Dull and earthy</button>
+          </div>
+        </div>
+        <div class="id-q">
+          <p>3. How hard is it?</p>
+          <div class="id-chips" id="id-hardness" role="group" aria-label="Hardness">
+            <button type="button" class="id-chip" data-v="soft">Soft — a fingernail marks it</button>
+            <button type="button" class="id-chip" data-v="medium">Medium — a knife marks it, but it does not scratch glass</button>
+            <button type="button" class="id-chip" data-v="hard">Hard — it scratches glass</button>
+          </div>
+        </div>
+        <div class="id-q">
+          <p>4. Where did you find it?</p>
+          <select id="id-state" class="id-state" aria-label="State where you found it">
+            <option value="">Not sure</option>
+          </select>
+        </div>
+        <button type="button" class="btn-solid" id="id-go">Show likely minerals</button>
+        <p class="id-msg" id="id-quiz-msg" aria-live="polite" style="margin-top:10px"></p>
+      </div>
+    </div>
+    <div class="id-results" id="id-results" aria-live="polite"></div>
+  </section>
 
   <section class="card simple-sec" aria-label="Find places near you">
     <h2 data-i18n="locTitle">Near you</h2>
@@ -1947,6 +2063,1122 @@ renderUserList();
       });
     } catch (e) {}
   }
+})();
+</script>
+<script>
+/* ————— Identify a rock or mineral — data from the map's own encyclopedia ————— */
+var IDENTIFY_DATA = {
+ "groups": [
+  {
+   "id": "gold",
+   "name": "Gold",
+   "picture": "group-gold.jpg"
+  },
+  {
+   "id": "iron",
+   "name": "Iron and steel metals",
+   "picture": "group-iron.jpg"
+  },
+  {
+   "id": "base-metals",
+   "name": "Copper, lead and zinc",
+   "picture": "group-base-metals.jpg"
+  },
+  {
+   "id": "tin",
+   "name": "Tin, columbite and tantalite",
+   "picture": "group-tin.jpg"
+  },
+  {
+   "id": "lithium",
+   "name": "Lithium and pegmatite minerals",
+   "picture": "group-lithium.jpg"
+  },
+  {
+   "id": "gemstones",
+   "name": "Gemstones",
+   "picture": "group-gemstones.jpg"
+  },
+  {
+   "id": "coal",
+   "name": "Coal, lignite and bitumen",
+   "picture": "group-coal.jpg"
+  },
+  {
+   "id": "limestone",
+   "name": "Limestone, marble and dolomite",
+   "picture": "group-limestone.jpg"
+  },
+  {
+   "id": "industrial",
+   "name": "Industrial minerals",
+   "picture": "group-industrial.jpg"
+  },
+  {
+   "id": "uranium",
+   "name": "Uranium",
+   "picture": "group-uranium.jpg"
+  }
+ ],
+ "minerals": [
+  {
+   "id": "amethyst",
+   "name": "amethyst",
+   "group": "gemstones",
+   "colours": [
+    "purple"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A purple form of quartz. Found in the gem fields of southern Kaduna, in pegmatite and basalt rock. Used as a gemstone.",
+   "check": "It scratches glass. The purple colour is the giveaway.",
+   "sites": 1,
+   "states": [
+    "Kaduna"
+   ]
+  },
+  {
+   "id": "aquamarine",
+   "name": "aquamarine",
+   "group": "gemstones",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A pale blue-green gemstone, a form of beryl. Found in pegmatites in Nasarawa, Plateau, Kogi, Kaduna and Bauchi. Cut and sold as a gemstone.",
+   "check": "It scratches glass. The pale blue-green colour is the giveaway.",
+   "sites": 13,
+   "states": [
+    "Nasarawa",
+    "Plateau",
+    "Kogi"
+   ]
+  },
+  {
+   "id": "barite",
+   "name": "barite",
+   "group": "industrial",
+   "colours": [
+    "white"
+   ],
+   "shine": [
+    "glassy",
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A heavy white mineral found in veins in the Benue Trough, mainly in Cross River, Nasarawa, Benue and Taraba. Used to make drilling mud heavy in oil wells.",
+   "check": "It feels heavy for its size. That weight is the giveaway.",
+   "sites": 88,
+   "states": [
+    "Cross River",
+    "Nasarawa",
+    "Benue"
+   ]
+  },
+  {
+   "id": "bentonite",
+   "name": "bentonite",
+   "group": "industrial",
+   "colours": [
+    "white",
+    "grey"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "soft",
+   "description": "A soft clay found in the Sokoto Basin and other northern states. It swells in water and is used in drilling mud.",
+   "check": "Wet it \u2014 bentonite swells and feels slick and soapy.",
+   "sites": 13,
+   "states": [
+    "Adamawa",
+    "Taraba",
+    "Sokoto"
+   ]
+  },
+  {
+   "id": "beryl",
+   "name": "beryl",
+   "group": "lithium",
+   "colours": [
+    "green",
+    "blue",
+    "yellow"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A hard glassy mineral found in pegmatites, the rock that also carries lithium and tantalite. Its coloured forms are aquamarine and emerald. Found in Nasarawa, Oyo, Kogi and Osun.",
+   "check": "It scratches glass. Look for it in coarse pegmatite rock.",
+   "sites": 22,
+   "states": [
+    "Nasarawa",
+    "Oyo",
+    "Kogi"
+   ]
+  },
+  {
+   "id": "bitumen",
+   "name": "bitumen",
+   "group": "coal",
+   "colours": [
+    "black"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "soft",
+   "description": "Black, tar-like oil sand in a belt across Lagos, Ogun, Ondo and Edo. Nigeria holds about 38 to 42 billion barrels of bitumen in place. Used for road tar.",
+   "check": "It smells of tar and is sticky when warm.",
+   "sites": 21,
+   "states": [
+    "Ogun",
+    "Ondo",
+    "Lagos"
+   ]
+  },
+  {
+   "id": "chromite",
+   "name": "chromite",
+   "group": "iron",
+   "colours": [
+    "black"
+   ],
+   "shine": [
+    "metallic",
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A dark mineral reported in a few places in Zamfara, Sokoto and Kebbi. Only one report was found, and it is not yet checked. Used to make stainless steel.",
+   "check": "It leaves a brown mark. The evidence for it in Nigeria is thin, so treat this as a guess.",
+   "sites": 5,
+   "states": [
+    "Zamfara",
+    "Sokoto",
+    "Kebbi"
+   ]
+  },
+  {
+   "id": "clay",
+   "name": "clay",
+   "group": "industrial",
+   "colours": [
+    "red",
+    "white",
+    "grey"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "soft",
+   "description": "Soft earth found in river plains and basins, used for bricks and pots. Worked locally, for example at Wurno in Sokoto.",
+   "check": "Wet it \u2014 clay moulds in the hand and feels smooth.",
+   "sites": 9,
+   "states": [
+    "Delta",
+    "Sokoto",
+    "Bayelsa"
+   ]
+  },
+  {
+   "id": "coal",
+   "name": "coal",
+   "group": "coal",
+   "colours": [
+    "black"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "Black rock that burns, from the Anambra Basin \u2014 Enugu, Kogi, Gombe and Benue. Enugu was the oldest coalfield in sub-Saharan Africa and powered the railways.",
+   "check": "It leaves a black mark and burns. Lignite, its brown cousin, leaves a brown mark.",
+   "sites": 97,
+   "states": [
+    "Enugu",
+    "Kogi",
+    "Gombe"
+   ]
+  },
+  {
+   "id": "columbite",
+   "name": "columbite",
+   "group": "tin",
+   "colours": [
+    "black"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "hard",
+   "description": "A dark, heavy mineral from the Jos Plateau granites, found with tin. The Plateau holds the world's largest known columbite deposits. Used in electronics.",
+   "check": "It feels heavy for its size and is found with tin stone.",
+   "sites": 76,
+   "states": [
+    "Plateau",
+    "Kogi",
+    "Kaduna"
+   ]
+  },
+  {
+   "id": "copper",
+   "name": "copper",
+   "group": "base-metals",
+   "colours": [
+    "red"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "medium",
+   "description": "A red-brown metal found in veins in the Benue Trough, at Awe and in Nasarawa and Zamfara. The main copper mineral is chalcopyrite, with green malachite as a surface sign. Used in wires and cables.",
+   "check": "Look for green or blue crust on the surface \u2014 that is often copper.",
+   "sites": 5,
+   "states": [
+    "Nasarawa",
+    "Zamfara",
+    "Osun"
+   ]
+  },
+  {
+   "id": "dolomite",
+   "name": "dolomite",
+   "group": "limestone",
+   "colours": [
+    "white",
+    "grey"
+   ],
+   "shine": [
+    "glassy",
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A pale rock like limestone, found in the schist belts of Edo, the FCT and Nasarawa. Used in cement, lime and as a building stone.",
+   "check": "Put a drop of vinegar on it \u2014 dolomite fizzes slowly, weaker than limestone.",
+   "sites": 5,
+   "states": [
+    "Edo",
+    "FCT",
+    "Nasarawa"
+   ]
+  },
+  {
+   "id": "emerald",
+   "name": "emerald",
+   "group": "gemstones",
+   "colours": [
+    "green"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A green gemstone found in the pegmatites of Nasarawa, Kogi and Plateau. It grows in the same pegmatites as lithium and tourmaline. Cut and sold as a gemstone.",
+   "check": "It scratches glass. The deep green colour is the giveaway.",
+   "sites": 5,
+   "states": [
+    "Nasarawa",
+    "Kogi",
+    "Plateau"
+   ]
+  },
+  {
+   "id": "feldspar",
+   "name": "feldspar",
+   "group": "lithium",
+   "colours": [
+    "white",
+    "red"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A pale pink or white mineral in granite and pegmatite. Used to make glass and ceramics. One deposit in Kogi was measured at about 119 million tonnes.",
+   "check": "It breaks into flat, shiny sheets. It scratches glass.",
+   "sites": 7,
+   "states": [
+    "Kogi",
+    "Niger",
+    "Ogun"
+   ]
+  },
+  {
+   "id": "fluorite",
+   "name": "fluorite",
+   "group": "industrial",
+   "colours": [
+    "purple",
+    "green",
+    "blue"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "medium",
+   "description": "Glassy cubes in purple, green or blue, found with quartz and galena in Taraba, Jigawa and Plateau. Some change colour in sunlight. A collector's stone.",
+   "check": "A knife scratches it, but it does not scratch glass. The cube shape is the giveaway.",
+   "sites": 8,
+   "states": [
+    "Taraba",
+    "Jigawa",
+    "Plateau"
+   ]
+  },
+  {
+   "id": "garnet",
+   "name": "garnet",
+   "group": "gemstones",
+   "colours": [
+    "red"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A deep red gemstone found in small amounts in pegmatites in Zamfara and Oyo. Part of the north-western gemstone zone.",
+   "check": "It scratches glass. The deep red colour is the giveaway.",
+   "sites": 2,
+   "states": [
+    "Zamfara",
+    "Oyo"
+   ]
+  },
+  {
+   "id": "gold",
+   "name": "gold",
+   "group": "gold",
+   "colours": [
+    "yellow"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "medium",
+   "description": "A yellow metal found in quartz veins in the schist belts, mainly in Zamfara, Niger, Kwara and Kaduna. Nigeria's first large gold mine, Segilola in Osun, poured its first gold in 2021. Used for jewellery and as money.",
+   "check": "Gold is very heavy for its size and does not rust or tarnish. A knife leaves a mark in it.",
+   "sites": 243,
+   "states": [
+    "Zamfara",
+    "Niger",
+    "Kwara"
+   ]
+  },
+  {
+   "id": "gypsum",
+   "name": "gypsum",
+   "group": "industrial",
+   "colours": [
+    "white"
+   ],
+   "shine": [
+    "glassy",
+    "dull"
+   ],
+   "hardness": "soft",
+   "description": "A soft white mineral in the Sokoto Basin, at Wurno and Dukamaje. Used in cement and plaster.",
+   "check": "A fingernail scratches it. That softness is the giveaway.",
+   "sites": 21,
+   "states": [
+    "Gombe",
+    "Sokoto",
+    "Yobe"
+   ]
+  },
+  {
+   "id": "iron-ore",
+   "name": "iron ore",
+   "group": "iron",
+   "colours": [
+    "black",
+    "red"
+   ],
+   "shine": [
+    "metallic",
+    "dull"
+   ],
+   "hardness": "hard",
+   "description": "A dark, heavy rock from banded iron beds in Kogi, Niger and Enugu. Itakpe in Kogi is Nigeria's largest iron ore deposit and the feed for the Ajaokuta steel plant. Used to make steel.",
+   "check": "It leaves a red-brown mark, and a magnet may stick to it.",
+   "sites": 113,
+   "states": [
+    "Kogi",
+    "Niger",
+    "Enugu"
+   ]
+  },
+  {
+   "id": "kaolin",
+   "name": "kaolin",
+   "group": "industrial",
+   "colours": [
+    "white"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "soft",
+   "description": "A smooth white clay from weathered rock, best known at Kankara in Katsina, rated the best in Nigeria for medicines. Also used in paper, paint and ceramics.",
+   "check": "It feels smooth and white, and moulds when wet.",
+   "sites": 19,
+   "states": [
+    "Katsina",
+    "Bauchi",
+    "Ogun"
+   ]
+  },
+  {
+   "id": "lead",
+   "name": "lead",
+   "group": "base-metals",
+   "colours": [
+    "grey"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "soft",
+   "description": "A heavy grey metal found with zinc in veins in the Benue Trough, mainly in Ebonyi and Plateau. The main mineral is galena. Used in batteries.",
+   "check": "It feels heavy for its size, and a knife cuts it easily.",
+   "sites": 42,
+   "states": [
+    "Ebonyi",
+    "Plateau",
+    "Bauchi"
+   ]
+  },
+  {
+   "id": "lignite",
+   "name": "lignite",
+   "group": "coal",
+   "colours": [
+    "black",
+    "red"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A brown coal from the Orlu belt in Imo, Delta and Anambra. It burns with smoke and is softer than the black coal of Enugu. Used for power.",
+   "check": "It leaves a brown mark and burns with smoke.",
+   "sites": 32,
+   "states": [
+    "Delta",
+    "Imo",
+    "Anambra"
+   ]
+  },
+  {
+   "id": "limestone",
+   "name": "limestone",
+   "group": "limestone",
+   "colours": [
+    "white",
+    "grey"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A pale rock found only in the sedimentary basins \u2014 Benue, Sokoto, Dahomey and Chad. It feeds the big cement plants at Obajana and Ewekoro. Used for cement and lime.",
+   "check": "Put a drop of vinegar on it \u2014 limestone fizzes.",
+   "sites": 35,
+   "states": [
+    "Ogun",
+    "Cross River",
+    "Ebonyi"
+   ]
+  },
+  {
+   "id": "lithium",
+   "name": "lithium",
+   "group": "lithium",
+   "colours": [
+    "white",
+    "grey",
+    "purple"
+   ],
+   "shine": [
+    "glassy",
+    "dull"
+   ],
+   "hardness": "hard",
+   "description": "A light metal found in pegmatites in Nasarawa, Kwara, Oyo and Kaduna. Its minerals are spodumene and lepidolite. Used in batteries for phones and electric cars.",
+   "check": "Look for it in coarse pegmatite rock with big crystals. It scratches glass.",
+   "sites": 93,
+   "states": [
+    "Nasarawa",
+    "Kwara",
+    "Oyo"
+   ]
+  },
+  {
+   "id": "manganese",
+   "name": "manganese",
+   "group": "iron",
+   "colours": [
+    "black",
+    "grey"
+   ],
+   "shine": [
+    "metallic",
+    "dull"
+   ],
+   "hardness": "hard",
+   "description": "A dark mineral found at Anka in Zamfara and in Cross River. Used to make steel. One study put its manganese content at about half the rock.",
+   "check": "It leaves a black mark. It is found with iron ore.",
+   "sites": 17,
+   "states": [
+    "Zamfara",
+    "Cross River",
+    "Kebbi"
+   ]
+  },
+  {
+   "id": "marble",
+   "name": "marble",
+   "group": "limestone",
+   "colours": [
+    "white",
+    "grey",
+    "red"
+   ],
+   "shine": [
+    "glassy",
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A pale, sparkly stone made when limestone is changed by heat and pressure. Found in the schist belts of Kogi, Edo and Oyo. Used for floors, tiles and cement.",
+   "check": "Put a drop of vinegar on it \u2014 marble fizzes. Its grains sparkle.",
+   "sites": 17,
+   "states": [
+    "Kogi",
+    "Edo",
+    "Oyo"
+   ]
+  },
+  {
+   "id": "mica",
+   "name": "mica",
+   "group": "lithium",
+   "colours": [
+    "grey",
+    "yellow"
+   ],
+   "shine": [
+    "metallic",
+    "glassy"
+   ],
+   "hardness": "soft",
+   "description": "A shiny mineral that peels into thin, bendy sheets. Found in pegmatites at Ijero in Ekiti and in Kogi. Used in paints, plastics and electrical parts.",
+   "check": "It peels into thin sheets that bend. That is the giveaway.",
+   "sites": 3,
+   "states": [
+    "Ekiti",
+    "Kogi"
+   ]
+  },
+  {
+   "id": "nickel",
+   "name": "nickel",
+   "group": "iron",
+   "colours": [
+    "grey"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "medium",
+   "description": "A silvery metal found at Dangoma in Kaduna, in a strange form \u2014 small balls of pure nickel metal in weathered soil, a style not seen elsewhere. The big money figures quoted for it are early guesses, not a reserve.",
+   "check": "Do not trust a money value for this one \u2014 no reserve has been proven.",
+   "sites": 3,
+   "states": [
+    "Osun",
+    "Kaduna"
+   ]
+  },
+  {
+   "id": "phosphate",
+   "name": "phosphate",
+   "group": "industrial",
+   "colours": [
+    "red",
+    "grey"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "Brown nodules in the Sokoto Basin, mainly in the Dange Formation. Nigeria's main phosphate source, used to make fertiliser. Its grade matches major world deposits.",
+   "check": "Look for brown lumps in shale. A lab test is needed to be sure.",
+   "sites": 16,
+   "states": [
+    "Sokoto",
+    "Ogun",
+    "Cross River"
+   ]
+  },
+  {
+   "id": "ruby",
+   "name": "ruby",
+   "group": "gemstones",
+   "colours": [
+    "red"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A red gemstone, a form of corundum, found in the southern Kaduna gem field. Cut and sold as a gemstone.",
+   "check": "It scratches glass. The deep red colour is the giveaway.",
+   "sites": 4,
+   "states": [
+    "Kaduna",
+    "Osun",
+    "Oyo"
+   ]
+  },
+  {
+   "id": "salt",
+   "name": "salt",
+   "group": "industrial",
+   "colours": [
+    "white"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "soft",
+   "description": "White salt from brine springs, made for centuries at Keana in Nasarawa and Uburu in Ebonyi. Used in food and in industry.",
+   "check": "It tastes salty and melts in water.",
+   "sites": 24,
+   "states": [
+    "Nasarawa",
+    "Ebonyi",
+    "Cross River"
+   ]
+  },
+  {
+   "id": "sapphire",
+   "name": "sapphire",
+   "group": "gemstones",
+   "colours": [
+    "blue"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A blue gemstone found in basalt rock and river gravels in southern Kaduna, around Antang. Nigeria's first commercial sapphire mine opened there in 1980.",
+   "check": "It scratches glass. The blue colour is the giveaway.",
+   "sites": 9,
+   "states": [
+    "Kaduna",
+    "Plateau",
+    "Taraba"
+   ]
+  },
+  {
+   "id": "silica-sand",
+   "name": "silica sand",
+   "group": "industrial",
+   "colours": [
+    "white"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "Clean white sand, over 94% silica, found on the coastal plain in Ondo, Delta and Lagos. Used to make glass. The Igbokoda deposit is the largest glass sand in Nigeria.",
+   "check": "The grains scratch glass. It is loose sand, not solid rock.",
+   "sites": 15,
+   "states": [
+    "Delta",
+    "Lagos",
+    "Ogun"
+   ]
+  },
+  {
+   "id": "talc",
+   "name": "talc",
+   "group": "industrial",
+   "colours": [
+    "white",
+    "green"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "soft",
+   "description": "A soft, soapy-feeling white mineral found in the schist belts of Niger, Osun and Oyo. Most Nigerian talc is deep-coloured and low grade. Used in powder, paint and paper.",
+   "check": "It feels soapy, and a fingernail scratches it.",
+   "sites": 12,
+   "states": [
+    "Niger",
+    "Osun",
+    "Oyo"
+   ]
+  },
+  {
+   "id": "tantalite",
+   "name": "tantalite",
+   "group": "tin",
+   "colours": [
+    "black"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "hard",
+   "description": "A black, heavy mineral found with tin and columbite in the Jos Plateau granites and in pegmatites. Used in electronics.",
+   "check": "It feels heavy for its size and is found with tin stone.",
+   "sites": 53,
+   "states": [
+    "Kogi",
+    "Kwara",
+    "Nasarawa"
+   ]
+  },
+  {
+   "id": "tin",
+   "name": "tin",
+   "group": "tin",
+   "colours": [
+    "black",
+    "red"
+   ],
+   "shine": [
+    "metallic",
+    "dull"
+   ],
+   "hardness": "hard",
+   "description": "A dark mineral from the Jos Plateau granites, mined since colonial times. The Plateau was once one of the world's major tin suppliers. Used in solder and cans.",
+   "check": "It feels heavy for its size. It scratches glass.",
+   "sites": 63,
+   "states": [
+    "Plateau",
+    "Bauchi",
+    "Kaduna"
+   ]
+  },
+  {
+   "id": "topaz",
+   "name": "topaz",
+   "group": "gemstones",
+   "colours": [
+    "blue",
+    "yellow",
+    "white"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A pale blue or yellow gemstone found in the pegmatites of Nasarawa, Kaduna and Plateau. Cut and sold as a gemstone.",
+   "check": "It scratches glass. The pale blue or yellow colour is the giveaway.",
+   "sites": 5,
+   "states": [
+    "Nasarawa",
+    "Kaduna",
+    "Plateau"
+   ]
+  },
+  {
+   "id": "tourmaline",
+   "name": "tourmaline",
+   "group": "gemstones",
+   "colours": [
+    "black",
+    "green",
+    "purple"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A glassy crystal in black, green or pink, found in the pegmatites of Osun, Nasarawa, Oyo and Kaduna. Cut and sold as a gemstone.",
+   "check": "It scratches glass. Long ridged crystals are the giveaway.",
+   "sites": 22,
+   "states": [
+    "Osun",
+    "Nasarawa",
+    "Oyo"
+   ]
+  },
+  {
+   "id": "tungsten",
+   "name": "tungsten",
+   "group": "tin",
+   "colours": [
+    "black",
+    "grey"
+   ],
+   "shine": [
+    "metallic"
+   ],
+   "hardness": "medium",
+   "description": "A dark, heavy mineral found in the pegmatites of southern Kaduna, around Gidan Waya. It was found during tin exploration. Used in hard tools and light bulbs.",
+   "check": "It feels heavy for its size and is found with tin stone.",
+   "sites": 3,
+   "states": [
+    "Plateau",
+    "Kaduna"
+   ]
+  },
+  {
+   "id": "uranium",
+   "name": "uranium",
+   "group": "uranium",
+   "colours": [
+    "black",
+    "yellow",
+    "green"
+   ],
+   "shine": [
+    "dull"
+   ],
+   "hardness": "medium",
+   "description": "A dark mineral found in granites and sandstones in the Gongola Basin, Adamawa and Bauchi. Used as fuel in nuclear power.",
+   "check": "Do not keep a suspected sample. Wash your hands and tell a geologist.",
+   "sites": 6,
+   "states": [
+    "Adamawa",
+    "Bauchi",
+    "Cross River"
+   ]
+  },
+  {
+   "id": "zinc",
+   "name": "zinc",
+   "group": "base-metals",
+   "colours": [
+    "red",
+    "black",
+    "yellow"
+   ],
+   "shine": [
+    "glassy",
+    "metallic"
+   ],
+   "hardness": "medium",
+   "description": "A metal found with lead in veins in the Benue Trough, mainly in Ebonyi, Plateau and Bauchi. Its main mineral is sphalerite. Used to coat steel so it does not rust.",
+   "check": "It is found with lead in the same veins. A lab test is needed to be sure.",
+   "sites": 36,
+   "states": [
+    "Ebonyi",
+    "Plateau",
+    "Bauchi"
+   ]
+  },
+  {
+   "id": "zircon",
+   "name": "zircon",
+   "group": "gemstones",
+   "colours": [
+    "red",
+    "yellow",
+    "white"
+   ],
+   "shine": [
+    "glassy"
+   ],
+   "hardness": "hard",
+   "description": "A glassy brown or red crystal found with tin in the Jos Plateau granites. Used in ceramics and as a gemstone.",
+   "check": "It scratches glass. It is found with tin stone.",
+   "sites": 12,
+   "states": [
+    "Plateau",
+    "Bauchi",
+    "Kaduna"
+   ]
+  }
+ ]
+};
+(function(){
+  var panel = document.getElementById("identify-panel");
+  var openLink = document.getElementById("identify-open");
+  var closeBtn = document.getElementById("identify-close");
+  var resultsEl = document.getElementById("id-results");
+  var pickList = document.getElementById("id-pick-list");
+  var searchEl = document.getElementById("id-search");
+  var quizMsg = document.getElementById("id-quiz-msg");
+  if (!panel || !resultsEl) return;
+
+  var GROUPS = {};
+  IDENTIFY_DATA.groups.forEach(function(g){ GROUPS[g.id] = g; });
+  var MINERALS = IDENTIFY_DATA.minerals.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
+  var STATES = ["Abia","Akwa Ibom","Adamawa","Anambra","Bauchi","Bayelsa","Benue","Borno","Cross River","Delta","Ebonyi","Edo","Ekiti","Enugu","FCT","Gombe","Imo","Jigawa","Kaduna","Kano","Katsina","Kebbi","Kogi","Kwara","Lagos","Nasarawa","Niger","Ogun","Ondo","Osun","Oyo","Plateau","Rivers","Sokoto","Taraba","Yobe","Zamfara"];
+
+  function escId(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function capId(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function colorOf(name){
+    try { if (typeof mineralColor === "function") return mineralColor(name); } catch(e){}
+    return "#E8C15A";
+  }
+
+  /* ——— Open / close ——— */
+  function openPanel(){
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function closePanel(){
+    panel.hidden = true;
+    var mapCard = document.querySelector(".map-card");
+    if (mapCard) mapCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (openLink) openLink.focus();
+  }
+  if (openLink) openLink.addEventListener("click", function(e){ e.preventDefault(); openPanel(); });
+  if (closeBtn) closeBtn.addEventListener("click", closePanel);
+  if (window.location.hash === "#identify-panel") panel.hidden = false;
+
+  /* ——— Result card ——— */
+  function cardHTML(m){
+    var g = GROUPS[m.group] || { name: m.group, picture: "" };
+    var isUranium = m.group === "uranium";
+    var checkHTML = isUranium
+      ? '<p class="id-check id-safety"><strong>Safety first:</strong> ' + escId(m.check) + '</p>'
+      : '<p class="id-check"><strong>Field check:</strong> ' + escId(m.check) + '</p>';
+    return '<p class="id-likely">Likely group: <strong>' + escId(g.name) + '</strong></p>'
+      + '<figure><img src="assets/' + escId(g.picture) + '" alt="Representative picture of the ' + escId(g.name) + ' group" loading="lazy" /><figcaption>Representative picture — a typical sample from this group, not a photo of a specific mine.</figcaption></figure>'
+      + '<h3 style="color:' + colorOf(m.name) + '">' + escId(capId(m.name)) + '</h3>'
+      + '<p>' + escId(m.description) + '</p>'
+      + checkHTML
+      + '<p><strong>' + m.sites + (m.sites === 1 ? ' site' : ' sites') + '</strong> on this map · Top states: ' + escId(m.states.join(", ")) + '</p>'
+      + '<button type="button" class="btn-solid id-find" data-mineral="' + escId(m.name) + '">Where to find it</button>';
+  }
+  function showCards(list, note){
+    resultsEl.innerHTML = "";
+    if (note){
+      var p = document.createElement("p");
+      p.className = "id-msg";
+      p.textContent = note;
+      resultsEl.appendChild(p);
+    }
+    list.forEach(function(m){
+      var art = document.createElement("article");
+      art.className = "id-card";
+      art.innerHTML = cardHTML(m);
+      resultsEl.appendChild(art);
+    });
+    resultsEl.querySelectorAll(".id-find").forEach(function(btn){
+      btn.addEventListener("click", function(){ goFind(btn.getAttribute("data-mineral")); });
+    });
+    if (list.length) resultsEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  /* ——— Where to find it: open the browse-by-mineral list for this mineral ——— */
+  function goFind(mineralName){
+    try {
+      var sel = document.getElementById("f-mineral");
+      if (sel) sel.value = mineralName;
+      if (typeof window.expandedMinerals !== "undefined"){
+        var fresh = {};
+        fresh[mineralName] = true;
+        window.expandedMinerals = fresh;
+      }
+      if (typeof window.render === "function") window.render();
+    } catch(e){}
+    var card = document.querySelector(".browse-card");
+    if (card) setTimeout(function(){ card.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
+  }
+
+  /* ——— Way in 1: pick a mineral ——— */
+  function renderPickList(filter){
+    var q = (filter || "").trim().toLowerCase();
+    pickList.innerHTML = "";
+    MINERALS.filter(function(m){ return !q || m.name.indexOf(q) !== -1; }).forEach(function(m){
+      var li = document.createElement("li");
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "id-pick";
+      var g = GROUPS[m.group];
+      b.innerHTML = '<span class="dot" style="background:' + colorOf(m.name) + '"></span><span>' + escId(capId(m.name)) + '</span><span class="grp">' + escId(g ? g.name : m.group) + '</span>';
+      b.addEventListener("click", function(){ showCards([m]); });
+      li.appendChild(b);
+      pickList.appendChild(li);
+    });
+    if (!pickList.children.length){
+      var li2 = document.createElement("li");
+      li2.className = "id-msg";
+      li2.textContent = "No mineral with that name. Try another spelling.";
+      pickList.appendChild(li2);
+    }
+  }
+  renderPickList("");
+  if (searchEl) searchEl.addEventListener("input", function(){ renderPickList(searchEl.value); });
+
+  /* ——— Way in 2: 4 quick questions ——— */
+  var answers = { colour: null, shine: null, hardness: null };
+  function wireChips(id, key){
+    var box = document.getElementById(id);
+    if (!box) return;
+    box.querySelectorAll(".id-chip").forEach(function(chip){
+      chip.addEventListener("click", function(){
+        box.querySelectorAll(".id-chip").forEach(function(c){ c.classList.remove("on"); });
+        chip.classList.add("on");
+        answers[key] = chip.getAttribute("data-v");
+      });
+    });
+  }
+  wireChips("id-colours", "colour");
+  wireChips("id-shine", "shine");
+  wireChips("id-hardness", "hardness");
+
+  var stateSel = document.getElementById("id-state");
+  STATES.forEach(function(st){
+    var o = document.createElement("option");
+    o.value = st;
+    o.textContent = st === "FCT" ? "FCT (Abuja)" : st;
+    stateSel.appendChild(o);
+  });
+
+  document.getElementById("id-go").addEventListener("click", function(){
+    var state = stateSel.value;
+    if (!answers.colour && !answers.shine && !answers.hardness && !state){
+      quizMsg.textContent = "Answer at least one question first — colour is the best start.";
+      return;
+    }
+    quizMsg.textContent = "";
+    var scored = MINERALS.map(function(m){
+      var score = 0;
+      if (answers.colour && answers.colour !== "other" && m.colours.indexOf(answers.colour) !== -1) score += 3;
+      if (answers.shine && m.shine.indexOf(answers.shine) !== -1) score += 2;
+      if (answers.hardness && m.hardness === answers.hardness) score += 2;
+      if (state && m.states.indexOf(state) !== -1) score += 2;
+      return { m: m, score: score };
+    }).filter(function(x){ return x.score > 0; })
+      .sort(function(a,b){ return b.score - a.score || b.m.sites - a.m.sites || a.m.name.localeCompare(b.m.name); })
+      .slice(0, 3);
+    if (!scored.length){
+      showCards([], "No close match on this map. Try a different colour or shine — or pick a mineral from the list.");
+      return;
+    }
+    showCards(scored.map(function(x){ return x.m; }), "Best matches from your answers — most likely first. These are likely groups, not proof. Only a lab test can be sure.");
+  });
+
+  /* ——— Way in 3: photo — stays on the device, preview only ——— */
+  var photoInput = document.getElementById("id-photo");
+  var thumb = document.getElementById("id-thumb");
+  if (photoInput) photoInput.addEventListener("change", function(){
+    var f = photoInput.files && photoInput.files[0];
+    if (!f || !window.FileReader) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      thumb.innerHTML = "";
+      var img = document.createElement("img");
+      img.src = reader.result;
+      img.alt = "Your sample photo";
+      thumb.appendChild(img);
+    };
+    reader.readAsDataURL(f);
+  });
 })();
 </script>
 </body>
