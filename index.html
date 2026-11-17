@@ -469,6 +469,21 @@
   .id-card .id-safety{border:1px solid var(--t-exploration);background:rgba(224,122,62,.1);border-radius:8px;padding:11px 13px;color:var(--ink)}
   .id-card .id-safety strong{color:var(--t-exploration)}
   .id-find{margin-top:4px}
+  .id-loc-line{font-size:15px;color:var(--gold-pale);background:rgba(201,162,39,.07);border:1px solid var(--line-gold);border-radius:8px;padding:10px 13px}
+  .id-closest{margin-top:14px;border-top:1px solid var(--line);padding-top:13px}
+  .id-closest h4{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);margin:0 0 6px}
+  .id-closest p{font-size:15px;margin:0 0 8px}
+  .id-near{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+  .id-site-btn{width:100%;text-align:left;border:1px solid var(--line);background:var(--bg2);color:var(--ink);border-radius:8px;padding:10px 13px;cursor:pointer;min-height:44px;font-size:15px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+  .id-site-btn:hover{border-color:var(--gold-deep);background:var(--surface2)}
+  .id-site-btn .sn{font-weight:800}
+  .id-site-btn .sl{color:var(--ink-dim)}
+  .id-site-btn .sd{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--gold-bright);white-space:nowrap}
+  .id-site-btn .sin{margin-left:auto;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+  .id-add{margin-top:12px}
+  .id-geo-row{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+  .id-geo-row p{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px}
+  .id-geo-row p small{display:block;font-weight:400;font-size:14px;color:var(--muted);margin-top:2px}
 
   /* ————— Install app (PWA) — discreet pill, only when install is offered ————— */
   .pwa-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:900;display:flex;align-items:center;gap:10px;max-width:min(94vw,520px);background:rgba(20,24,21,.97);border:1px solid var(--line-gold);border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.6);padding:8px 8px 8px 16px;font-size:14px;color:var(--ink-dim)}
@@ -650,6 +665,11 @@
         </div>
         <button type="button" class="btn-solid" id="id-go">Show likely minerals</button>
         <p class="id-msg" id="id-quiz-msg" aria-live="polite" style="margin-top:10px"></p>
+        <div class="id-geo-row">
+          <p>Your location <small>Optional. Share it to see the closest places a mineral is found, with real distances. It stays on your device and is never sent anywhere.</small></p>
+          <button type="button" class="btn-ghost" id="id-geo-btn">Share my location</button>
+          <p class="id-msg" id="id-geo-msg" aria-live="polite" style="margin-top:8px"></p>
+        </div>
       </div>
     </div>
     <div class="id-results" id="id-results" aria-live="polite"></div>
@@ -3016,6 +3036,47 @@ var IDENTIFY_DATA = {
   var MINERALS = IDENTIFY_DATA.minerals.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
   var STATES = ["Abia","Akwa Ibom","Adamawa","Anambra","Bauchi","Bayelsa","Benue","Borno","Cross River","Delta","Ebonyi","Edo","Ekiti","Enugu","FCT","Gombe","Imo","Jigawa","Kaduna","Kano","Katsina","Kebbi","Kogi","Kwara","Lagos","Nasarawa","Niger","Ogun","Ondo","Osun","Oyo","Plateau","Rivers","Sokoto","Taraba","Yobe","Zamfara"];
 
+  /* ——— Location data: per-state site counts per mineral, counted from this map's own sites ——— */
+  var STATE_PRED = {"Abia":{"bentonite":1,"iron ore":5,"lignite":1,"limestone":1},"Adamawa":{"barite":3,"bentonite":2,"coal":2,"gold":4,"gypsum":1,"iron ore":2,"lithium":1,"salt":1,"sapphire":1,"uranium":2},"Akwa Ibom":{"bentonite":1,"clay":1},"Anambra":{"iron ore":5,"kaolin":1,"lignite":5},"Bauchi":{"aquamarine":1,"barite":2,"coal":3,"columbite":7,"gold":9,"iron ore":5,"kaolin":3,"lead":6,"limestone":1,"lithium":4,"sapphire":1,"tantalite":1,"tin":9,"uranium":2,"zinc":6,"zircon":3},"Bayelsa":{"clay":1,"silica sand":2},"Benue":{"barite":14,"coal":10,"gold":3,"iron ore":1,"lead":3,"limestone":4,"salt":1,"zinc":3},"Borno":{"bentonite":1,"gold":3,"iron ore":1,"kaolin":1},"Cross River":{"barite":25,"coal":1,"gold":2,"iron ore":1,"lead":1,"limestone":4,"lithium":2,"manganese":4,"phosphate":1,"salt":4,"talc":1,"uranium":1,"zinc":1},"Delta":{"clay":4,"iron ore":1,"lignite":14,"limestone":1,"silica sand":4},"Ebonyi":{"barite":2,"bentonite":1,"coal":1,"gold":5,"lead":16,"limestone":4,"salt":6,"zinc":16},"Edo":{"bentonite":1,"bitumen":1,"coal":4,"dolomite":1,"gold":8,"iron ore":2,"lignite":4,"limestone":1,"lithium":1,"marble":4},"Ekiti":{"feldspar":1,"gold":5,"iron ore":1,"kaolin":1,"lithium":5,"mica":2,"talc":1,"tantalite":2},"Enugu":{"coal":28,"gold":1,"iron ore":12,"lignite":1,"limestone":1},"FCT":{"dolomite":1,"gold":5,"iron ore":1,"lithium":4,"marble":1},"Gombe":{"barite":3,"bentonite":1,"coal":11,"fluorite":1,"gold":3,"gypsum":9,"iron ore":1,"limestone":3},"Imo":{"coal":1,"iron ore":2,"lignite":7,"limestone":1},"Jigawa":{"fluorite":2,"gold":5,"iron ore":2,"zircon":1},"Kaduna":{"amethyst":1,"aquamarine":1,"beryl":1,"columbite":12,"emerald":1,"gold":17,"iron ore":6,"kaolin":1,"lithium":11,"manganese":3,"nickel":1,"ruby":1,"sapphire":3,"talc":1,"tantalite":7,"tin":8,"topaz":1,"tourmaline":3,"tungsten":1,"zircon":2},"Kano":{"columbite":6,"gold":2,"tin":5,"uranium":1,"zircon":1},"Katsina":{"fluorite":1,"gold":7,"iron ore":2,"kaolin":4,"silica sand":1},"Kebbi":{"chromite":1,"clay":1,"gold":15,"iron ore":2,"kaolin":1,"lithium":1,"manganese":4},"Kogi":{"aquamarine":2,"beryl":4,"coal":24,"columbite":13,"dolomite":1,"emerald":1,"feldspar":4,"gold":13,"iron ore":29,"kaolin":1,"limestone":1,"lithium":10,"marble":6,"mica":1,"talc":1,"tantalite":15,"tin":3,"tourmaline":1},"Kwara":{"beryl":1,"columbite":2,"dolomite":1,"gold":23,"iron ore":2,"kaolin":1,"lithium":14,"marble":1,"talc":1,"tantalite":8,"tourmaline":3},"Lagos":{"bentonite":1,"bitumen":3,"silica sand":3},"Nasarawa":{"aquamarine":4,"barite":21,"beryl":6,"coal":7,"columbite":4,"copper":2,"dolomite":1,"emerald":2,"gold":9,"iron ore":3,"lead":2,"limestone":1,"lithium":18,"marble":1,"ruby":1,"salt":9,"tantalite":7,"tin":4,"topaz":3,"tourmaline":4,"zinc":2,"zircon":1},"Niger":{"coal":3,"feldspar":1,"gold":25,"iron ore":14,"kaolin":1,"lead":1,"lithium":3,"manganese":2,"marble":1,"talc":3},"Ogun":{"aquamarine":1,"beryl":1,"bitumen":9,"feldspar":1,"gold":4,"kaolin":2,"limestone":7,"lithium":1,"phosphate":4,"silica sand":3},"Ondo":{"bitumen":8,"coal":1,"columbite":4,"gold":3,"iron ore":2,"kaolin":1,"limestone":1,"silica sand":1,"tantalite":4},"Osun":{"aquamarine":1,"beryl":3,"columbite":2,"copper":1,"gold":13,"iron ore":1,"lithium":2,"nickel":2,"ruby":1,"talc":2,"tantalite":4,"tourmaline":5},"Oyo":{"aquamarine":1,"beryl":5,"columbite":1,"garnet":1,"gold":4,"iron ore":4,"lithium":13,"marble":2,"ruby":1,"talc":2,"tantalite":3,"tin":1,"tourmaline":4},"Plateau":{"aquamarine":2,"barite":8,"coal":1,"columbite":25,"emerald":1,"fluorite":1,"gold":4,"iron ore":1,"kaolin":1,"lead":6,"lithium":1,"sapphire":2,"tantalite":2,"tin":33,"topaz":1,"tourmaline":1,"tungsten":2,"zinc":6,"zircon":4},"Rivers":{"clay":1,"silica sand":1},"Sokoto":{"bentonite":1,"chromite":1,"clay":1,"gold":5,"gypsum":6,"iron ore":1,"limestone":4,"phosphate":11},"Taraba":{"barite":9,"bentonite":2,"fluorite":3,"gold":8,"iron ore":2,"lead":2,"lithium":2,"marble":1,"salt":3,"sapphire":2,"zinc":2},"Yobe":{"barite":1,"bentonite":1,"gypsum":5},"Zamfara":{"beryl":1,"chromite":3,"copper":2,"garnet":1,"gold":38,"iron ore":2,"lead":5,"manganese":4,"tourmaline":1}};
+  var currentState = "";
+  var idLoc = null;
+  var lastList = [], lastNote = "";
+  function allSites(){ try { if (typeof SITES !== "undefined" && SITES) return SITES; } catch(e){} return []; }
+  function stateTotal(state){
+    var n = 0;
+    allSites().forEach(function(s){ if (s.state === state) n++; });
+    return n;
+  }
+  function isWeakState(state){ return !!state && stateTotal(state) <= 3; }
+  function predCount(state, mineral){ var sp = STATE_PRED[state]; return (sp && sp[mineral]) || 0; }
+  function topMinerals(state){
+    var sp = STATE_PRED[state] || {}, best = 0, names = [];
+    Object.keys(sp).forEach(function(k){ if (sp[k] > best) best = sp[k]; });
+    Object.keys(sp).forEach(function(k){ if (sp[k] === best && best > 0) names.push(k); });
+    names.sort();
+    return { names: names, count: best };
+  }
+  function joinNames(names){ return names.map(function(n, i){ return i === 0 ? capId(n) : n; }).join(", ").replace(/, ([^,]*)$/, " and $1"); }
+  function predSentence(state){
+    if (!state) return "";
+    var total = stateTotal(state);
+    if (total <= 3) return "Only " + total + (total === 1 ? " site is" : " sites are") + " recorded in " + state + " on this map, so location cannot narrow this down.";
+    var t = topMinerals(state);
+    if (!t.names.length) return "";
+    if (t.names.length === 1) return capId(t.names[0]) + " is the most common mineral recorded in " + state + " (" + t.count + " sites).";
+    return joinNames(t.names) + " are tied as the most common minerals recorded in " + state + " (" + t.count + " sites each).";
+  }
+  function havId(aLat, aLon, bLat, bLon){
+    try { if (typeof havKm === "function") return havKm(aLat, aLon, bLat, bLon); } catch(e){}
+    var R = 6371, dLa = (bLat - aLat) * Math.PI / 180, dLo = (bLon - aLon) * Math.PI / 180;
+    var h = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(aLat * Math.PI / 180) * Math.cos(bLat * Math.PI / 180) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  function sitesWith(mineral){
+    return allSites().filter(function(s){ return s.minerals && s.minerals.indexOf(mineral) !== -1; });
+  }
+  function stateLabelOf(state){ return state === "FCT" ? "FCT" : state + " State"; }
+
   function escId(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function capId(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
   function colorOf(name){
@@ -3051,9 +3112,97 @@ var IDENTIFY_DATA = {
       + '<p>' + escId(m.description) + '</p>'
       + checkHTML
       + '<p><strong>' + m.sites + (m.sites === 1 ? ' site' : ' sites') + '</strong> on this map · Top states: ' + escId(m.states.join(", ")) + '</p>'
-      + '<button type="button" class="btn-solid id-find" data-mineral="' + escId(m.name) + '">Where to find it</button>';
+      + '<button type="button" class="btn-solid id-find" data-mineral="' + escId(m.name) + '">Where to find it</button>'
+      + locLineHTML(m)
+      + closestHTML(m)
+      + '<button type="button" class="btn-ghost id-add" data-mineral="' + escId(m.name) + '">Add this location to the map</button>';
   }
-  function showCards(list, note){
+  /* ——— What the chosen state says about this mineral (from the map's own site counts) ——— */
+  function locLineHTML(m){
+    if (!currentState) return "";
+    var total = stateTotal(currentState);
+    if (total <= 3) return '<p class="id-loc-line">Only ' + total + (total === 1 ? " site is" : " sites are") + " recorded in " + escId(currentState) + " on this map, so location says little here.</p>";
+    var c = predCount(currentState, m.name);
+    if (!c) return '<p class="id-loc-line">' + escId(capId(m.name)) + " has no recorded sites in " + escId(currentState) + " on this map.</p>";
+    var t = topMinerals(currentState);
+    var extra = "";
+    if (t.names.indexOf(m.name) !== -1){
+      extra = t.names.length === 1
+        ? " It is the most common mineral recorded in " + currentState + "."
+        : " It is tied as the most common mineral recorded in " + currentState + ".";
+    }
+    return '<p class="id-loc-line">' + escId(capId(m.name)) + " is recorded at " + c + (c === 1 ? " site" : " sites") + " in " + escId(currentState) + " on this map." + escId(extra) + "</p>";
+  }
+  /* ——— Closest location found — real distances only from a shared device location ——— */
+  function siteBtnHTML(s, right){
+    return '<li><button type="button" class="id-site-btn" data-site="' + escId(s.id) + '"><span class="sn">' + escId(s.name) + '</span><span class="sl">' + escId(s.locality || "") + " · " + escId(stateLabelOf(s.state)) + "</span>" + right + "</button></li>";
+  }
+  function closestHTML(m){
+    var list = sitesWith(m.name);
+    var head = '<div class="id-closest"><h4>Closest location found</h4>';
+    if (idLoc){
+      var ranked = list.map(function(s){ return { s: s, d: havId(idLoc.lat, idLoc.lon, s.lat, s.lon) }; })
+        .sort(function(a, b){ return a.d - b.d; }).slice(0, 5);
+      if (!ranked.length) return head + "<p>No sites for " + escId(m.name) + " are recorded on this map yet.</p></div>";
+      var rows = ranked.map(function(r){
+        var dist = r.d < 1 ? "under 1 km" : "about " + Math.round(r.d) + " km";
+        return siteBtnHTML(r.s, '<span class="sd">' + dist + "</span>");
+      }).join("");
+      return head + "<p>Nearest places " + escId(capId(m.name)) + " is found, from your shared location. Distances are to the town — pins show the town, not the exact spot.</p><ul class=\"id-near\">" + rows + "</ul></div>";
+    }
+    if (currentState){
+      var inState = list.filter(function(s){ return s.state === currentState; });
+      if (inState.length){
+        var rows2 = inState.slice(0, 5).map(function(s){ return siteBtnHTML(s, '<span class="sin">in your state</span>'); }).join("");
+        var more = inState.length > 5 ? "<p>…and " + (inState.length - 5) + " more in " + escId(currentState) + ".</p>" : "";
+        return head + "<p>Places " + escId(capId(m.name)) + " is found in your state (" + escId(currentState) + "). Share your location above to see real distances.</p><ul class=\"id-near\">" + rows2 + "</ul>" + more + "</div>";
+      }
+      var byState = {};
+      list.forEach(function(s){ byState[s.state] = (byState[s.state] || 0) + 1; });
+      var cand = Object.keys(byState).filter(function(st){ return st !== currentState; });
+      try {
+        if (typeof STATE_CENT !== "undefined" && STATE_CENT[currentState.toLowerCase()]){
+          var c0 = STATE_CENT[currentState.toLowerCase()];
+          cand.sort(function(a, b){
+            var ca = STATE_CENT[a.toLowerCase()], cb = STATE_CENT[b.toLowerCase()];
+            if (!ca || !cb) return byState[b] - byState[a];
+            return havId(c0.lat, c0.lon, ca.lat, ca.lon) - havId(c0.lat, c0.lon, cb.lat, cb.lon) || byState[b] - byState[a];
+          });
+        } else { cand.sort(function(a, b){ return byState[b] - byState[a]; }); }
+      } catch(e){ cand.sort(function(a, b){ return byState[b] - byState[a]; }); }
+      var near = cand.slice(0, 3).map(function(st){ return escId(st) + " (" + byState[st] + (byState[st] === 1 ? " site" : " sites") + ")"; }).join(", ");
+      return head + "<p>No " + escId(m.name) + " sites are recorded in " + escId(currentState) + "." + (near ? " The nearest states where it is recorded: " + near + "." : "") + "</p></div>";
+    }
+    return head + "<p>Pick the state where you found it (question 4), or share your location above, to see the closest places " + escId(capId(m.name)) + " is found.</p></div>";
+  }
+  /* ——— Build the map data: hand this find to the existing add-a-place flow, pre-filled ——— */
+  function addToMap(m){
+    try {
+      var addBody = document.getElementById("add-body");
+      var addToggle = document.getElementById("add-toggle");
+      if (addBody && addBody.hidden){ addBody.hidden = false; if (addToggle) addToggle.setAttribute("aria-expanded", "true"); }
+      var mSel = document.getElementById("add-mineral");
+      var other = document.getElementById("add-mineral-other");
+      if (mSel){
+        var found = false;
+        for (var i = 0; i < mSel.options.length; i++){ if (mSel.options[i].value === m.name){ found = true; break; } }
+        if (found){ mSel.value = m.name; if (other) other.value = ""; }
+        else { mSel.value = "other"; if (other) other.value = capId(m.name); }
+      }
+      var sSel = document.getElementById("add-state");
+      if (sSel && currentState) sSel.value = currentState;
+      var foundEl = document.getElementById("add-found");
+      if (foundEl && !foundEl.value) foundEl.value = "Sample identified as likely " + m.name + " with the Identify a rock tool.";
+      var msg = document.getElementById("add-msg");
+      if (msg) msg.textContent = "Filled in from your identification. Add the nearest town, check the details, then tap \"Add this place to my map\". Your place is marked \"Added by a user — not yet checked\".";
+      var sec = addBody ? addBody.closest("section") : null;
+      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      var townEl = document.getElementById("add-town");
+      if (townEl) setTimeout(function(){ try { townEl.focus({ preventScroll: true }); } catch(e){} }, 450);
+    } catch(e){}
+  }
+  function showCards(list, note, noScroll){
+    lastList = list; lastNote = note || "";
     resultsEl.innerHTML = "";
     if (note){
       var p = document.createElement("p");
@@ -3070,7 +3219,18 @@ var IDENTIFY_DATA = {
     resultsEl.querySelectorAll(".id-find").forEach(function(btn){
       btn.addEventListener("click", function(){ goFind(btn.getAttribute("data-mineral")); });
     });
-    if (list.length) resultsEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    resultsEl.querySelectorAll(".id-site-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        try { if (typeof selectSite === "function") selectSite(btn.getAttribute("data-site"), true); } catch(e){}
+      });
+    });
+    resultsEl.querySelectorAll(".id-add").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var name = btn.getAttribute("data-mineral");
+        MINERALS.forEach(function(mm){ if (mm.name === name) addToMap(mm); });
+      });
+    });
+    if (list.length && !noScroll) resultsEl.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   /* ——— Where to find it: open the browse-by-mineral list for this mineral ——— */
@@ -3100,7 +3260,11 @@ var IDENTIFY_DATA = {
       b.className = "id-pick";
       var g = GROUPS[m.group];
       b.innerHTML = '<span class="dot" style="background:' + colorOf(m.name) + '"></span><span>' + escId(capId(m.name)) + '</span><span class="grp">' + escId(g ? g.name : m.group) + '</span>';
-      b.addEventListener("click", function(){ showCards([m]); });
+      b.addEventListener("click", function(){
+        var ss = document.getElementById("id-state");
+        currentState = ss ? ss.value : "";
+        showCards([m]);
+      });
       li.appendChild(b);
       pickList.appendChild(li);
     });
@@ -3146,21 +3310,49 @@ var IDENTIFY_DATA = {
       return;
     }
     quizMsg.textContent = "";
+    currentState = state || "";
+    var weak = isWeakState(state);
+    var top = state && !weak ? topMinerals(state) : { names: [], count: 0 };
     var scored = MINERALS.map(function(m){
       var score = 0;
       if (answers.colour && answers.colour !== "other" && m.colours.indexOf(answers.colour) !== -1) score += 3;
       if (answers.shine && m.shine.indexOf(answers.shine) !== -1) score += 2;
       if (answers.hardness && m.hardness === answers.hardness) score += 2;
-      if (state && m.states.indexOf(state) !== -1) score += 2;
-      return { m: m, score: score };
+      var pc = 0;
+      if (state && !weak){
+        pc = predCount(state, m.name);
+        if (pc > 0 && top.count > 0) score += 1 + Math.round(3 * pc / top.count);
+      }
+      return { m: m, score: score, pc: pc };
     }).filter(function(x){ return x.score > 0; })
-      .sort(function(a,b){ return b.score - a.score || b.m.sites - a.m.sites || a.m.name.localeCompare(b.m.name); })
+      .sort(function(a,b){ return b.score - a.score || b.pc - a.pc || b.m.sites - a.m.sites || a.m.name.localeCompare(b.m.name); })
       .slice(0, 3);
     if (!scored.length){
-      showCards([], "No close match on this map. Try a different colour or shine — or pick a mineral from the list.");
+      currentState = state || "";
+      var noMsg = "No close match on this map. Try a different colour or shine — or pick a mineral from the list.";
+      var ps0 = predSentence(state);
+      if (ps0) noMsg += " " + ps0;
+      showCards([], noMsg);
       return;
     }
-    showCards(scored.map(function(x){ return x.m; }), "Best matches from your answers — most likely first. These are likely groups, not proof. Only a lab test can be sure.");
+    var note = "Best matches from your answers — most likely first. These are likely groups, not proof. Only a lab test can be sure.";
+    var ps = predSentence(state);
+    if (ps) note += " " + ps;
+    showCards(scored.map(function(x){ return x.m; }), note);
+  });
+
+  /* ——— Share device location: in-memory only, powers real distances in Closest location found ——— */
+  var geoBtn = document.getElementById("id-geo-btn");
+  var geoMsg = document.getElementById("id-geo-msg");
+  if (geoBtn) geoBtn.addEventListener("click", function(){
+    if (!navigator.geolocation){ if (geoMsg) geoMsg.textContent = "This device cannot share its location. Pick the state in question 4 instead."; return; }
+    if (geoMsg) geoMsg.textContent = "Getting your location…";
+    navigator.geolocation.getCurrentPosition(function(pos){
+      idLoc = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+      try { pendingPin = { lat: idLoc.lat, lon: idLoc.lon }; } catch(e){}
+      if (geoMsg) geoMsg.textContent = "Location shared. Closest places now show real distances to the town.";
+      if (lastList.length) showCards(lastList, lastNote, true);
+    }, function(){ if (geoMsg) geoMsg.textContent = "Location was not shared. Pick the state in question 4 instead."; }, { timeout: 12000, maximumAge: 600000 });
   });
 
   /* ——— Way in 3: photo — stays on the device, preview only ——— */
