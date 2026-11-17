@@ -386,10 +386,12 @@
   .brand-row.slim .lang-bar{margin:0 0 0 auto}
   .brand-row.slim .lang-btn{padding:8px 14px;min-height:40px;font-size:14px}
   .seo-line{margin:10px 0 0;font-size:15.5px;font-weight:600;color:var(--ink-dim)}
-  .site-links{display:flex;flex-wrap:wrap;gap:2px 18px;margin:11px 0 0;padding-top:9px;border-top:1px solid var(--line)}
+  .site-links{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;margin:11px 0 0;padding-top:11px;border-top:1px solid var(--line)}
   .site-links a{font-size:13.5px;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.02em;padding:3px 0}
   .site-links a:hover{color:var(--gold-pale)}
   .site-links a.on{color:var(--gold-bright)}
+  .site-links a#identify-open{font-size:18px;font-weight:800;color:#12140F;background:var(--gold-bright);border:1px solid var(--gold-bright);border-radius:999px;padding:10px 20px;letter-spacing:.01em;line-height:1.2;box-shadow:0 4px 14px rgba(232,193,90,.28)}
+  .site-links a#identify-open:hover{background:var(--gold-pale);border-color:var(--gold-pale);color:#12140F}
   .controls{margin-top:14px;padding:12px}
   .controls-row.more{margin-top:10px}
   .controls-row.more[hidden]{display:none}
@@ -597,7 +599,6 @@
 
   <nav class="site-links" aria-label="Site pages">
     <a href="index.html" class="on" aria-current="page">Map</a>
-    <a href="blog.html">Blog</a>
     <a href="#identify-panel" id="identify-open">Identify a rock</a>
   </nav>
 
