@@ -288,7 +288,7 @@
   @media (max-width:640px){ .entry-body{padding:19px 16px 24px} .entry-overlay{padding:0} .entry-panel{border-radius:0;min-height:100%} }
   .entry-body h2{font-size:clamp(30px,4.6vw,42px);font-weight:800;margin:10px 0 5px;color:var(--ink)}
   .entry-body .loc{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:17px;color:var(--gold-pale)}
-  .entry-body::after{content:"Nigeria Mining Map — Mining & Exploration · The Investor Atlas by Dr Daniel Aluge";display:block;margin-top:30px;padding-top:15px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:center}
+  .entry-body::after{content:"Nigeria Mining Map — Mining & Exploration · The Investor Atlas";display:block;margin-top:30px;padding-top:15px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:center}
   .entry-sec{margin-top:26px}
   .entry-sec>h3{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);border-bottom:1px solid var(--line-gold);padding-bottom:8px;margin:0 0 12px}
   .entry-sec>h3::before{content:"◆";color:var(--gold);font-size:10px;margin-right:9px;vertical-align:2px}
@@ -506,7 +506,6 @@
   <div class="topbar-in slim">
     <div class="brand-row slim">
       <h1>Nigeria <em>Mining</em> Map</h1>
-      <span class="brand-handle">by Dr Daniel Aluge</span>
       <div class="lang-bar" role="group" aria-label="Choose your language">
         <span class="lang-label" data-i18n="langLabel">Read in:</span>
         <button type="button" class="lang-btn on" data-lang="en">English</button>
@@ -515,7 +514,7 @@
         <button type="button" class="lang-btn" data-lang="fr">Français</button>
       </div>
     </div>
-    <p class="seo-line">Minerals in Nigeria: gold, tin, lithium, iron ore, coal, lead-zinc and more — over 1,000 sites across all 36 states and the FCT, by Dr Daniel Aluge.</p>
+    <p class="seo-line">Minerals in Nigeria: gold, tin, lithium, iron ore, coal, lead-zinc and more — over 1,000 sites across all 36 states and the FCT.</p>
   </div>
 </header>
 
@@ -704,7 +703,7 @@
     <button type="button" class="sec-toggle" id="add-toggle" aria-expanded="false"><span data-i18n="addTitle">Add a place you found</span><span class="m-chev" aria-hidden="true">▾</span></button>
     <div id="add-body" hidden>
       <p data-i18n="addText">Your place shows on your map at once, marked “Added by a user — not yet checked”. It stays on this device only.</p>
-      <p data-i18n="addReview">Tap “Send for review” on your place to copy its details for Dr Daniel Aluge.</p>
+      <p data-i18n="addReview">Tap “Send for review” on your place to copy its details.</p>
       <form id="add-form" novalidate>
         <div class="form-grid">
           <div class="field">
@@ -783,7 +782,7 @@
     <p data-i18n="discText">Not money advice. Check everything yourself before you spend.</p>
   </div>
 
-  <footer><span class="foot-brand">NIGERIA MINING MAP</span> · <span data-i18n="footText">Mining &amp; exploration · Dr Daniel Aluge</span> · Map data © OpenStreetMap contributors © CARTO</footer>
+  <footer><span class="foot-brand">NIGERIA MINING MAP</span> · <span data-i18n="footText">Mining &amp; exploration</span> · Map data © OpenStreetMap contributors © CARTO</footer>
 </div>
 
 
@@ -864,7 +863,7 @@ function updateLiveMap(s){
 var map = null, layer = null, markers = {};
 if (window.L) {
   map = L.map("map", { scrollWheelZoom: true }).setView([9.1, 8.0], 6);
-  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: "Esri, &copy; OpenStreetMap contributors" }).addTo(map);
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: "Esri, &copy; OpenStreetMap contributors &middot; <span style=\"color:#E8C15A;font-weight:600\">Dr Daniel Aluge</span>" }).addTo(map);
   L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16 }).addTo(map);
   map.fitBounds([[4.2, 2.7],[13.9, 15.0]]);
   layer = (L.markerClusterGroup ? L.markerClusterGroup({ maxClusterRadius: 55, spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, iconCreateFunction: function(cluster){ var n = cluster.getChildCount(); var sz = n >= 100 ? 52 : (n >= 10 ? 44 : 38); return L.divIcon({ className: "cluster-wrap", html: '<div class="cluster-badge" style="width:' + sz + 'px;height:' + sz + 'px">' + n + '</div>', iconSize: [sz, sz] }); } }) : L.layerGroup()).addTo(map);
@@ -1213,9 +1212,9 @@ var EN_W = {
   locSetTown: "Showing places near", locSetGeo: "Showing places near you.",
   userBadge: "Added by a user — not yet checked", addedByW: "Added by", whatFoundW: "What was found",
   proofW: "Proof or source", dateW: "Date added", pinNearW: "The pin is placed near the town named. It is not the exact spot.",
-  userStatusW: "Added by a user. Dr Daniel Aluge has not checked this place yet. It is not part of the checked map, and it is not shown as true.",
+  userStatusW: "Added by a user. This place has not been checked yet. It is not part of the checked map, and it is not shown as true.",
   sendReview: "Send for review", deleteW: "Delete", viewW: "See on the map",
-  copiedW: "Copied! Now paste it in a message or email and send it to Dr Daniel Aluge for checking.",
+  copiedW: "Copied! Now paste it in a message or email and send it for checking.",
   copyFailW: "Copy did not work. The words are in the box — press and hold, or use your mouse, to copy them yourself.",
   needFields: "Please fill the boxes with a star (*): mineral, name of the place, state, nearest town, and what you found.",
   addedW: "Done! Your place is now on your map, marked “Added by a user — not yet checked”. It is saved on this phone or computer.",
@@ -1263,9 +1262,9 @@ zh: {
   locSetTown: "正在显示这些地方附近的地点：", locSetGeo: "正在显示你附近的地点。",
   userBadge: "用户添加——还没有检查", addedByW: "添加人", whatFoundW: "发现了什么",
   proofW: "证据或来源", dateW: "添加日期", pinNearW: "图钉放在所写城镇的附近，不是确切位置。",
-  userStatusW: "由用户添加。Daniel Aluge 博士还没有检查这个地点。它不在已核实的地图里，也不会被当作真的来显示。",
+  userStatusW: "由用户添加。这个地点还没有检查。它不在已核实的地图里，也不会被当作真的来显示。",
   sendReview: "发送审核", deleteW: "删除", viewW: "在地图上看",
-  copiedW: "已复制！现在把它粘贴到消息或邮件里，发给 Daniel Aluge 博士检查。",
+  copiedW: "已复制！现在把它粘贴到消息或邮件里，发送检查。",
   copyFailW: "复制没有成功。文字在框里——长按或用鼠标自己复制。",
   needFields: "请填写带星号（*）的框：矿物、地点名称、州、最近的城镇、还有你发现了什么。",
   addedW: "好了！你的地点已经在你的地图上，标着“用户添加——还没有检查”。它保存在这部手机或电脑上。",
@@ -1273,7 +1272,7 @@ zh: {
   stateW: "州", townW: "最近的城镇", mineralW: "矿物", nameW: "地点名称",
   reviewHead: "新的矿物地点，等待审核——尼日利亚采矿地图", reviewNote: "注意：由用户添加——还没有检查。",
   yourLocW: "你在这里",
-  langLabel: "选择语言：", kicker: "尼日利亚的矿物 · 采矿和找矿 · Daniel Aluge 博士",
+  langLabel: "选择语言：", kicker: "尼日利亚的矿物 · 采矿和找矿",
   lede: "<strong>尼日利亚有1,000多个发现矿物的地方。</strong>这张地图上有1,070个地点，在全部36个州和联邦首都区。点任何图钉就能读那个地点。",
   stat1: "地图上的地点", stat2: "州 + 联邦首都区", stat3: "种矿物", stat4: "完整介绍",
   readFirst: "⚠ <strong>先读这里：</strong>图钉显示的是城镇，不是确切位置。“很可能”和“推算”的图钉不是检查过的矿山。付钱之前，先向采矿地籍办公室核实许可证。",
@@ -1291,11 +1290,11 @@ zh: {
   notesTitle: "需要知道的事", note1: "<strong>这张地图不显示</strong>许可证范围、矿物有多富、或地下有多少。它只显示地点在哪里、那里在做什么、还有我们能核查的最新消息。", note2: "<strong>“很可能”的地点没有实地核查过。</strong>有些消息可能旧了或错了。如果一个地点只靠一份弱报告，它的页面会写明。", note3: "<strong>“推断”的地点什么都不声称。</strong>每个页面都会写明它是从哪个已知地点推算出来的，还有为什么。",
   covTitle: "地图上有什么", cov1: "<strong>1,070个地点</strong>——46个已核实、914个很可能、110个推算——在全部36个州和联邦首都区。", cov2: "<strong>1,069个地点有完整介绍</strong>——它的历史、岩石、那里的工作、还有为什么重要。",
   discTitle: "只供参考——不是理财建议", discText: "这张地图<strong>只供参考，不是告诉你把钱投到哪里的建议</strong>。花钱之前自己核查一切——向采矿地籍办公室问许可证的事。",
-  footText: "采矿和找矿 · Daniel Aluge 博士", backBtn: "← 回到地图", entryTop: "地点详情 · 尼日利亚采矿地图",
+  footText: "采矿和找矿", backBtn: "← 回到地图", entryTop: "地点详情 · 尼日利亚采矿地图",
   locTitle: "找你附近的地点（只有你想找才用）", locText: "你的位置只留在你的手机或电脑上。", locPrivacy: "你的位置只留在你的手机或电脑上。我们不保存，也不发送到任何地方。",
   locTownLabel: "输入你的城镇", locTownBtn: "找我城镇附近的地点", locGeoBtn: "用我手机/电脑的位置", locClear: "清除我的位置",
   addTitle: "添加你发现的新地点", addText: "你的地点会马上出现在<strong>你的</strong>地图上，标着<strong>“用户添加——还没有检查”</strong>。它只保存在这部手机或电脑上。",
-  addReview: "点你地点上的<strong>“发送审核”</strong>，就能复制全部详情，发给 Daniel Aluge 博士。",
+  addReview: "点你地点上的<strong>“发送审核”</strong>，就能复制全部详情。",
   fMineral: "矿物 *", fMineralOther: "如果是“其他”，写下矿物", fName: "地点名称 *", fState: "州 *", fTown: "最近的城镇 *", fBy: "你的名字", fFound: "你在那里发现了什么？*", fProof: "证据或来源——一个链接，或几句说明", fPhoto: "照片，可选", fUseLoc: "用我的位置放图钉", fSubmit: "把这个地点加到我的地图",
   yourPlaces: "你添加的地点（没有检查）", yourPlacesNote: "这些只在这部手机或电脑上。它们不是已核实地图的一部分。"
 },
@@ -1316,9 +1315,9 @@ hi: {
   locSetTown: "इनके पास की जगहें दिखा रहे हैं:", locSetGeo: "आपके पास की जगहें दिखा रहे हैं।",
   userBadge: "उपयोगकर्ता ने जोड़ा — अभी जाँचा नहीं गया", addedByW: "जोड़ने वाला", whatFoundW: "क्या मिला",
   proofW: "सबूत या स्रोत", dateW: "जोड़ने की तारीख़", pinNearW: "पिन लिखे गए कस्बे के पास लगाया गया है। यह ठीक-ठीक जगह नहीं है।",
-  userStatusW: "एक उपयोगकर्ता ने जोड़ा। डॉ. Daniel Aluge ने अभी इस जगह को जाँचा नहीं है। यह जाँचे हुए मैप का हिस्सा नहीं है, और इसे सच करके नहीं दिखाया गया है।",
+  userStatusW: "एक उपयोगकर्ता ने जोड़ा। इस जगह को अभी जाँचा नहीं गया है। यह जाँचे हुए मैप का हिस्सा नहीं है, और इसे सच करके नहीं दिखाया गया है।",
   sendReview: "जाँच के लिए भेजें", deleteW: "हटाएँ", viewW: "मैप पर देखें",
-  copiedW: "कॉपी हो गया! अब इसे किसी संदेश या ईमेल में चिपकाकर डॉ. Daniel Aluge को जाँच के लिए भेजें।",
+  copiedW: "कॉपी हो गया! अब इसे किसी संदेश या ईमेल में चिपकाकर जाँच के लिए भेजें।",
   copyFailW: "कॉपी नहीं हुआ। शब्द डिब्बे में हैं — दबाकर रखें या माउस से ख़ुद कॉपी करें।",
   needFields: "कृपया तारे (*) वाले डिब्बे भरें: खनिज, जगह का नाम, राज्य, सबसे पास का कस्बा, और आपको क्या मिला।",
   addedW: "हो गया! आपकी जगह अब आपके मैप पर है, “उपयोगकर्ता ने जोड़ा — अभी जाँचा नहीं गया” लिखकर। यह इसी फ़ोन या कंप्यूटर पर सहेजी गई है।",
@@ -1326,7 +1325,7 @@ hi: {
   stateW: "राज्य", townW: "सबसे पास का कस्बा", mineralW: "खनिज", nameW: "जगह का नाम",
   reviewHead: "जाँच के लिए नई खनिज जगह — नाइजीरिया माइनिंग मैप", reviewNote: "नोट: उपयोगकर्ता ने जोड़ा — अभी जाँचा नहीं गया।",
   yourLocW: "आप यहाँ हैं",
-  langLabel: "अपनी भाषा चुनें:", kicker: "नाइजीरिया के खनिज · खनन और खनिज खोज · डॉ. Daniel Aluge",
+  langLabel: "अपनी भाषा चुनें:", kicker: "नाइजीरिया के खनिज · खनन और खनिज खोज",
   lede: "<strong>नाइजीरिया में 1,000 से ज़्यादा जगहों पर खनिज मिले हैं।</strong> इस मैप पर 1,070 जगहें हैं, सभी 36 राज्यों और FCT में। किसी पिन को छूकर उस जगह के बारे में पढ़ें।",
   stat1: "मैप पर जगहें", stat2: "राज्य + FCT", stat3: "खनिज", stat4: "पूरे लेख",
   readFirst: "⚠ <strong>पहले यह पढ़ें:</strong> पिन कस्बा दिखाता है, ठीक-ठीक जगह नहीं। संभावित और अनुमानित पिन जाँची हुई खदानें नहीं हैं। पैसे देने से पहले माइनिंग कैडस्ट्रे ऑफ़िस से लाइसेंस जाँचें।",
@@ -1344,11 +1343,11 @@ hi: {
   notesTitle: "जानना ज़रूरी है", note1: "<strong>यह मैप नहीं दिखाता</strong> लाइसेंस क्षेत्र, खनिज कितना समृद्ध है, या ज़मीन के नीचे कितना है। यह दिखाता है जगह कहाँ है, वहाँ क्या हो रहा है, और सबसे नई ख़बर जो हम जाँच सके।", note2: "<strong>संभावित जगहें लाइव जाँची नहीं गईं।</strong> कुछ ख़बरें पुरानी या ग़लत हो सकती हैं। अगर कोई जगह सिर्फ़ एक कमज़ोर रिपोर्ट पर टिकी है, तो उसके पेज पर लिखा होगा।", note3: "<strong>अनुमानित जगहें कुछ दावा नहीं करतीं।</strong> हर पेज बताता है कि वह किस जानी हुई जगह से निकाली गई, और क्यों।",
   covTitle: "मैप पर क्या है", cov1: "<strong>1,070 जगहें</strong> — 46 सत्यापित, 914 संभावित, 110 अनुमानित — सभी 36 राज्यों और FCT में।", cov2: "<strong>1,069 जगहों का पूरा लेख है</strong> — उसकी कहानी, उसकी चट्टानें, वहाँ का काम, और वह क्यों मायने रखती है।",
   discTitle: "सिर्फ़ जानकारी के लिए — पैसे की सलाह नहीं", discText: "यह मैप <strong>सिर्फ़ जानकारी के लिए है। यह सलाह नहीं है कि पैसे कहाँ लगाएँ।</strong> पैसे खर्च करने से पहले सब कुछ ख़ुद जाँचें — लाइसेंस के बारे में माइनिंग कैडस्ट्रे ऑफ़िस से पूछें।",
-  footText: "खनन और खनिज खोज · डॉ. Daniel Aluge", backBtn: "← मैप पर वापस", entryTop: "जगह का विवरण · नाइजीरिया माइनिंग मैप",
+  footText: "खनन और खनिज खोज", backBtn: "← मैप पर वापस", entryTop: "जगह का विवरण · नाइजीरिया माइनिंग मैप",
   locTitle: "अपने पास की जगहें खोजें (सिर्फ़ अगर आप चाहें)", locText: "आपकी जगह आपके फ़ोन या कंप्यूटर पर ही रहती है।", locPrivacy: "आपकी जगह आपके फ़ोन या कंप्यूटर पर ही रहती है। हम उसे सहेजते नहीं और कहीं भेजते नहीं।",
   locTownLabel: "अपना कस्बा लिखें", locTownBtn: "मेरे कस्बे के पास की जगहें खोजें", locGeoBtn: "मेरे फ़ोन / कंप्यूटर की जगह उपयोग करें", locClear: "मेरी जगह हटाएँ",
   addTitle: "आपको मिली नई जगह जोड़ें", addText: "आपकी जगह तुरंत <strong>आपके</strong> मैप पर दिखेगी, “उपयोगकर्ता ने जोड़ा — अभी जाँचा नहीं गया” लिखकर। यह सिर्फ़ इसी फ़ोन या कंप्यूटर पर रहती है।",
-  addReview: "अपनी जगह पर <strong>“जाँच के लिए भेजें”</strong> छूएँ — पूरा विवरण कॉपी हो जाएगा, डॉ. Daniel Aluge को भेजने के लिए।",
+  addReview: "अपनी जगह पर <strong>“जाँच के लिए भेजें”</strong> छूएँ — पूरा विवरण कॉपी हो जाएगा।",
   fMineral: "खनिज *", fMineralOther: "अगर “अन्य” है, तो खनिज लिखें", fName: "जगह का नाम *", fState: "राज्य *", fTown: "सबसे पास का कस्बा *", fBy: "आपका नाम", fFound: "आपको वहाँ क्या मिला? *", fProof: "सबूत या स्रोत — एक लिंक, या छोटा नोट", fPhoto: "फ़ोटो, चाहें तो", fUseLoc: "पिन के लिए मेरी जगह उपयोग करें", fSubmit: "यह जगह मेरे मैप में जोड़ें",
   yourPlaces: "आपकी जोड़ी जगहें (जाँची नहीं गईं)", yourPlacesNote: "ये सिर्फ़ इसी फ़ोन या कंप्यूटर पर हैं। ये जाँचे हुए मैप का हिस्सा नहीं हैं।"
 },
@@ -1369,9 +1368,9 @@ fr: {
   locSetTown: "Lieux près de :", locSetGeo: "Lieux près de vous.",
   userBadge: "Ajouté par un utilisateur — pas encore vérifié", addedByW: "Ajouté par", whatFoundW: "Ce qui a été trouvé",
   proofW: "Preuve ou source", dateW: "Date d'ajout", pinNearW: "L'épingle est placée près de la ville écrite. Ce n'est pas l'endroit exact.",
-  userStatusW: "Ajouté par un utilisateur. Le Dr Daniel Aluge n'a pas encore vérifié ce lieu. Il ne fait pas partie de la carte vérifiée, et il n'est pas présenté comme vrai.",
+  userStatusW: "Ajouté par un utilisateur. Ce lieu n'a pas encore été vérifié. Il ne fait pas partie de la carte vérifiée, et il n'est pas présenté comme vrai.",
   sendReview: "Envoyer pour vérification", deleteW: "Supprimer", viewW: "Voir sur la carte",
-  copiedW: "Copié ! Collez-le maintenant dans un message ou un e-mail et envoyez-le au Dr Daniel Aluge pour vérification.",
+  copiedW: "Copié ! Collez-le maintenant dans un message ou un e-mail et envoyez-le pour vérification.",
   copyFailW: "La copie n'a pas marché. Les mots sont dans la boîte — touchez et gardez, ou utilisez votre souris, pour les copier vous-même.",
   needFields: "Remplissez les cases avec une étoile (*) : minéral, nom du lieu, État, ville la plus proche, et ce que vous avez trouvé.",
   addedW: "C'est fait ! Votre lieu est maintenant sur votre carte, marqué « Ajouté par un utilisateur — pas encore vérifié ». Il est gardé sur ce téléphone ou cet ordinateur.",
@@ -1379,7 +1378,7 @@ fr: {
   stateW: "État", townW: "Ville la plus proche", mineralW: "Minéral", nameW: "Nom du lieu",
   reviewHead: "Nouveau lieu de minéral à vérifier — Carte minière du Nigeria", reviewNote: "Note : Ajouté par un utilisateur — pas encore vérifié.",
   yourLocW: "Vous êtes ici",
-  langLabel: "Lisez en :", kicker: "Minéraux du Nigeria · Mines et recherche de minéraux · Par le Dr Daniel Aluge",
+  langLabel: "Lisez en :", kicker: "Minéraux du Nigeria · Mines et recherche de minéraux",
   lede: "<strong>Plus de 1 000 lieux au Nigeria où l'on trouve des minéraux.</strong> Il y a 1 070 lieux sur cette carte, dans les 36 États et le FCT. Touchez une épingle pour lire ce lieu.",
   stat1: "lieux sur la carte", stat2: "États + FCT", stat3: "minéraux", stat4: "textes complets",
   readFirst: "⚠ <strong>Lisez d'abord ceci :</strong> une épingle montre la ville, pas l'endroit exact. Les épingles Probable et Déduit ne sont pas des mines contrôlées. Avant de payer pour un terrain ou un permis, vérifiez auprès du Mining Cadastre Office.",
@@ -1397,11 +1396,11 @@ fr: {
   notesTitle: "Bon à savoir", note1: "<strong>Cette carte ne montre pas</strong> les zones de permis, la richesse du minéral, ni la quantité dans le sol. Elle montre où se trouve un lieu, ce qui s'y passe, et les nouvelles les plus récentes que nous avons pu contrôler.", note2: "<strong>Les lieux Probable n'ont pas été contrôlés en direct.</strong> Certaines nouvelles peuvent être vieilles ou fausses. Si un lieu repose sur un seul rapport faible, sa page le dit.", note3: "<strong>Les lieux Déduit ne prétendent à rien.</strong> Chaque page nomme le lieu connu depuis lequel il a été déduit, et pourquoi.",
   covTitle: "Ce qu'il y a sur la carte", cov1: "<strong>1 070 lieux</strong> — 46 Vérifiés, 914 Probables, 110 Déduits — dans les 36 États et le FCT.", cov2: "<strong>1 069 lieux ont un texte complet</strong> — son histoire, ses roches, le travail là-bas, et pourquoi il compte.",
   discTitle: "Pour information seulement — pas un conseil d'argent", discText: "Cette carte est <strong>pour information seulement. Ce n'est pas un conseil sur où mettre votre argent.</strong> Vérifiez tout vous-même avant de dépenser — demandez au Mining Cadastre Office pour tout permis.",
-  footText: "Mines et recherche de minéraux · Par le Dr Daniel Aluge", backBtn: "← Retour à la carte", entryTop: "Détails du lieu · Carte minière du Nigeria",
+  footText: "Mines et recherche de minéraux", backBtn: "← Retour à la carte", entryTop: "Détails du lieu · Carte minière du Nigeria",
   locTitle: "Trouver les lieux près de vous (seulement si vous voulez)", locText: "Votre position reste sur votre téléphone ou votre ordinateur.", locPrivacy: "Votre position reste sur votre téléphone ou votre ordinateur. Nous ne la gardons pas et nous ne l'envoyons nulle part.",
   locTownLabel: "Écrivez votre ville", locTownBtn: "Trouver les lieux près de ma ville", locGeoBtn: "Utiliser la position de mon téléphone / ordinateur", locClear: "Effacer ma position",
   addTitle: "Ajouter un nouveau lieu que vous avez trouvé", addText: "Votre lieu apparaîtra tout de suite sur <strong>votre</strong> carte, marqué <strong>« Ajouté par un utilisateur — pas encore vérifié »</strong>. Il reste sur cet appareil seulement.",
-  addReview: "Touchez <strong>« Envoyer pour vérification »</strong> sur votre lieu pour copier ses détails pour le Dr Daniel Aluge.",
+  addReview: "Touchez <strong>« Envoyer pour vérification »</strong> sur votre lieu pour copier ses détails.",
   fMineral: "Minéral *", fMineralOther: "Si « Autre », écrivez le minéral", fName: "Nom du lieu *", fState: "État *", fTown: "Ville la plus proche *", fBy: "Votre nom", fFound: "Qu'avez-vous trouvé là-bas ? *", fProof: "Preuve ou source — un lien, ou un petit mot", fPhoto: "Photo — si vous en avez une", fUseLoc: "Utiliser ma position pour l'épingle", fSubmit: "Ajouter ce lieu à ma carte",
   yourPlaces: "Lieux que vous avez ajoutés (pas vérifiés)", yourPlacesNote: "Ils sont seulement sur ce téléphone ou cet ordinateur. Ils ne font pas partie de la carte vérifiée."
 }
