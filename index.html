@@ -455,6 +455,9 @@
   .id-thumb{flex:none;width:84px;height:84px;border:1px dashed var(--line-gold);border-radius:8px;overflow:hidden;background:var(--bg2);display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:12px;text-align:center;padding:4px}
   .id-thumb img{width:100%;height:100%;object-fit:cover;display:block}
   .id-photo-input{width:100%;padding:6px 0;border:0;background:transparent;color:var(--ink-dim);min-height:44px}
+  .id-lens{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+  .id-lens-btn{display:inline-flex;align-items:center;text-decoration:none;flex:none}
+  .id-lens-note{font-size:13.5px;color:var(--muted);margin:0;flex:1 1 220px;line-height:1.45}
   .id-results{margin-top:22px;display:grid;gap:14px}
   .id-results:empty{margin-top:0}
   .id-msg{font-size:15.5px;color:var(--ink-dim);margin:0}
@@ -607,7 +610,7 @@
       <button type="button" class="btn-ghost" id="identify-close">Back to map</button>
     </div>
     <p class="id-intro">Pick a mineral you know, or answer 4 quick questions about a sample you found.</p>
-    <p class="id-honest"><strong>A photo alone cannot prove a mineral. Your answers decide.</strong> Only a lab test can be sure.</p>
+    <p class="id-honest"><strong>A photo alone cannot prove a mineral. Your answers decide.</strong></p>
     <div class="id-cols">
       <div>
         <h3>Pick a mineral</h3>
@@ -620,6 +623,10 @@
           <div class="id-q">
             <p>Add a photo <small>Optional. It stays on your phone — it is never sent anywhere.</small></p>
             <input id="id-photo" class="id-photo-input" type="file" accept="image/*" aria-label="Add a photo of your sample" />
+            <div class="id-lens">
+              <a class="btn-ghost id-lens-btn" href="https://lens.google.com/upload" target="_blank" rel="noopener noreferrer">Check this photo with Google Lens</a>
+              <p class="id-lens-note">Lens finds pictures that look alike — it cannot prove a mineral. If you upload your photo there, it goes to Google. The preview here stays on your device.</p>
+            </div>
           </div>
           <div class="id-thumb" id="id-thumb" aria-hidden="true">No photo yet</div>
         </div>
@@ -3317,7 +3324,6 @@ var IDENTIFY_DATA = {
       var pc = 0;
       if (state && !weak){
         pc = predCount(state, m.name);
-        if (pc > 0 && top.count > 0) score += 1 + Math.round(3 * pc / top.count);
       }
       return { m: m, score: score, pc: pc };
     }).filter(function(x){ return x.score > 0; })
@@ -3331,7 +3337,7 @@ var IDENTIFY_DATA = {
       showCards([], noMsg);
       return;
     }
-    var note = "Best matches from your answers — most likely first. These are likely groups, not proof. Only a lab test can be sure.";
+    var note = "Best matches from your answers — most likely first. These are likely groups, not proof.";
     var ps = predSentence(state);
     if (ps) note += " " + ps;
     showCards(scored.map(function(x){ return x.m; }), note);
